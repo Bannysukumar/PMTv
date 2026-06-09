@@ -233,9 +233,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 If you encounter any issues, please check the [Issues](https://github.com/Bannysukumar/PMTv/issues) page or open a new ticket.
 
 **Connect with the Developer:**
-💼 **LinkedIn:** [Your LinkedIn Profile]
-📧 **Email:** [Your Email Address]
-🌐 **Portfolio:** [Your Website]
+💼 **LinkedIn:** [Adepu Sukumar](https://www.linkedin.com/in/adepusukumar/)
+📧 **Email:** [bannysukumar@gmail.com](mailto:bannysukumar@gmail.com)
+🌐 **Portfolio:** [adepu-sukumar.vercel.app](https://adepu-sukumar.vercel.app/)
 
 <div align="center">
   <br/>
