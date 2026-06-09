@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Basic Colors -->
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="transparent">#00000000</color>
+
+    <!-- Theme: Premium OTT Midnight (New Global Theme) -->
+    <color name="pd_background">#020617</color> <!-- Slate 950 -->
+    <color name="pd_surface">#0F172A</color> <!-- Slate 900 -->
+    <color name="pd_surface_variant">#1E293B</color> <!-- Slate 800 -->
+    <color name="pd_primary">#2563EB</color> <!-- Blue 600 (Accent) -->
+    <color name="pd_primary_variant">#1D4ED8</color> <!-- Blue 700 -->
+    <color name="pd_secondary">#3B82F6</color> <!-- Blue 500 -->
+    <color name="live_red">#EF4444</color>
+    
+    <!-- New Core System Colors -->
+    <color name="core_primary">#0F172A</color>
+    <color name="core_secondary">#1E293B</color>
+    <color name="core_accent">#2563EB</color>
+    <color name="core_background">#020617</color>
+    <color name="core_surface">#111827</color>
+    
+    <!-- Theme: Premium Light -->
+    <color name="pl_background">#F8F9FA</color>
+    <color name="pl_surface">#FFFFFF</color>
+    <color name="pl_surface_variant">#E9ECEF</color>
+    <color name="pl_primary">#D32F2F</color>
+    <color name="pl_primary_variant">#B71C1C</color>
+    <color name="pl_secondary">#1976D2</color>
+
+    <!-- Theme: AMOLED Black -->
+    <color name="ab_background">#000000</color>
+    <color name="ab_surface">#0A0A0A</color>
+    <color name="ab_surface_variant">#141414</color>
+    <color name="ab_primary">#FF0000</color>
+    <color name="ab_primary_variant">#CC0000</color>
+    <color name="ab_secondary">#00BCD4</color>
+
+    <!-- Theme: News Blue -->
+    <color name="nb_background">#0A192F</color>
+    <color name="nb_surface">#112240</color>
+    <color name="nb_surface_variant">#233554</color>
+    <color name="nb_primary">#64FFDA</color>
+    <color name="nb_primary_variant">#00E676</color>
+    <color name="nb_secondary">#FF4081</color>
+
+    <!-- Theme: Royal Red -->
+    <color name="rr_background">#1A0000</color>
+    <color name="rr_surface">#2D0000</color>
+    <color name="rr_surface_variant">#400000</color>
+    <color name="rr_primary">#FFB300</color>
+    <color name="rr_primary_variant">#FFA000</color>
+    <color name="rr_secondary">#FFFFFF</color>
+
+    <!-- Theme: TV Studio -->
+    <color name="tv_background">#141414</color>
+    <color name="tv_surface">#212121</color>
+    <color name="tv_surface_variant">#323232</color>
+    <color name="tv_primary">#E50914</color>
+    <color name="tv_primary_variant">#B80710</color>
+    <color name="tv_secondary">#F5F5F1</color>
+
+    <!-- Status Colors -->
+    <color name="success_green">#22C55E</color>
+    <color name="warning_orange">#F59E0B</color>
+    <color name="error_red">#EF4444</color>
+
+    <!-- Glassmorphism & Overlays -->
+    <color name="glass_light">#1AFFFFFF</color>
+    <color name="glass_dark">#4D000000</color>
+    <color name="glass_border">#33FFFFFF</color>
+    <color name="ripple_color">#33FFFFFF</color>
+    <color name="ripple_color_dark">#1A000000</color>
+    <color name="overlay_dark">#B3000000</color> <!-- 70% Black for gradients -->
+
+    <!-- Text Colors -->
+    <color name="text_primary_dark">#FFFFFF</color>
+    <color name="text_secondary_dark">#94A3B8</color>
+    <color name="text_primary_light">#1E293B</color>
+    <color name="text_secondary_light">#64748B</color>
+    <color name="text_hint_dark">#66FFFFFF</color>
+    <color name="text_hint_light">#66000000</color>
+
+    <!-- Legacy / Compatibility Colors (Keep them to avoid breaking existing layouts during transition) -->
+    <color name="bg_dark">@color/pd_background</color>
+    <color name="bg_amoled">@color/ab_background</color>
+    <color name="bg_blue">@color/nb_background</color>
+    <color name="bg_light">@color/pl_background</color>
+    <color name="primary_blue">@color/pd_secondary</color>
+    <color name="electric_blue">@color/ab_secondary</color>
+    <color name="professional_red">@color/pd_primary</color>
+
+    <!-- Shimmer Colors -->
+    <color name="shimmer_background">#1AFFFFFF</color>
+    <color name="shimmer_color">#33FFFFFF</color>
+</resources>

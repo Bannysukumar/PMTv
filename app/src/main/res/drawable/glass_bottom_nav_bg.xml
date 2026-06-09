@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    
+    <!-- 80% Opacity Core Surface color (#111827) -->
+    <solid android:color="#CC111827" />
+    
+    <!-- Thin Glass Border -->
+    <stroke 
+        android:width="1dp" 
+        android:color="#33FFFFFF" />
+        
+    <!-- Rounded Corners -->
+    <corners android:radius="32dp" />
+    
+</shape>

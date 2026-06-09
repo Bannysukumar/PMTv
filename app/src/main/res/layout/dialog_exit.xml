@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="320dp"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_glass_rounded"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Exit PMTv?"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/white"
+        android:textSize="22sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:text="Are you sure you want to stop the live stream and exit?"
+        android:fontFamily="@font/poppins"
+        android:textColor="@color/text_secondary_dark"
+        android:textSize="15sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnNo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_glass_rounded"
+            android:text="Cancel"
+            android:fontFamily="@font/poppins"
+            android:textColor="@color/white"
+            android:focusable="true"
+            android:nextFocusRight="@+id/btnYes"/>
+
+        <Button
+            android:id="@+id/btnYes"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/ripple_glass_rounded"
+            android:backgroundTint="@color/professional_red"
+            android:text="Exit"
+            android:fontFamily="@font/poppins"
+            android:textColor="@android:color/white"
+            android:focusable="true"
+            android:nextFocusLeft="@+id/btnNo"/>
+    </LinearLayout>
+
+</LinearLayout>

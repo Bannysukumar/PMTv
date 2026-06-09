@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Base background color for the icon -->
+    <item android:drawable="@android:color/white" />
+    
+    <!-- A 135dp square fits perfectly inside the 192dp circle safe zone without clipping -->
+    <item
+        android:drawable="@drawable/splash_logo"
+        android:gravity="center"
+        android:width="135dp"
+        android:height="135dp" />
+</layer-list>

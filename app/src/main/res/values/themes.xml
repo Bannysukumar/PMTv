@@ -1,0 +1,125 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.PMTv" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="colorPrimary">@color/primary_blue</item>
+        <item name="colorSecondary">@color/professional_red</item>
+        <item name="android:windowBackground">@color/bg_dark</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="Theme.PMTv" parent="Base.Theme.PMTv" />
+
+    <!-- 1. Dark Premium (Default) -->
+    <style name="Theme.PMTv.Dark" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/pd_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/pd_primary_variant</item>
+        <item name="colorSecondary">@color/pd_secondary</item>
+        <item name="android:colorBackground">@color/pd_background</item>
+        <item name="android:windowBackground">@color/pd_background</item>
+        <item name="colorSurface">@color/pd_surface</item>
+        <item name="colorSurfaceVariant">@color/pd_surface_variant</item>
+        <item name="android:textColorPrimary">@color/text_primary_dark</item>
+        <item name="android:textColorSecondary">@color/text_secondary_dark</item>
+        <item name="android:textColorHint">@color/text_hint_dark</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <!-- 2. News Blue -->
+    <style name="Theme.PMTv.Blue" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/nb_primary</item>
+        <item name="colorOnPrimary">@color/nb_background</item>
+        <item name="colorPrimaryContainer">@color/nb_primary_variant</item>
+        <item name="colorSecondary">@color/nb_secondary</item>
+        <item name="android:colorBackground">@color/nb_background</item>
+        <item name="android:windowBackground">@color/nb_background</item>
+        <item name="colorSurface">@color/nb_surface</item>
+        <item name="colorSurfaceVariant">@color/nb_surface_variant</item>
+        <item name="android:textColorPrimary">@color/text_primary_dark</item>
+        <item name="android:textColorSecondary">@color/text_secondary_dark</item>
+        <item name="android:textColorHint">@color/text_hint_dark</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <!-- 3. AMOLED Black -->
+    <style name="Theme.PMTv.AMOLED" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/ab_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/ab_primary_variant</item>
+        <item name="colorSecondary">@color/ab_secondary</item>
+        <item name="android:colorBackground">@color/ab_background</item>
+        <item name="android:windowBackground">@color/ab_background</item>
+        <item name="colorSurface">@color/ab_surface</item>
+        <item name="colorSurfaceVariant">@color/ab_surface_variant</item>
+        <item name="android:textColorPrimary">@color/text_primary_dark</item>
+        <item name="android:textColorSecondary">@color/text_secondary_dark</item>
+        <item name="android:textColorHint">@color/text_hint_dark</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <!-- 4. Light Professional -->
+    <style name="Theme.PMTv.Light" parent="Theme.Material3.Light.NoActionBar">
+        <item name="colorPrimary">@color/pl_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/pl_primary_variant</item>
+        <item name="colorSecondary">@color/pl_secondary</item>
+        <item name="android:colorBackground">@color/pl_background</item>
+        <item name="android:windowBackground">@color/pl_background</item>
+        <item name="colorSurface">@color/pl_surface</item>
+        <item name="colorSurfaceVariant">@color/pl_surface_variant</item>
+        <item name="android:textColorPrimary">@color/text_primary_light</item>
+        <item name="android:textColorSecondary">@color/text_secondary_light</item>
+        <item name="android:textColorHint">@color/text_hint_light</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:fontFamily">@font/poppins</item>
+        <item name="android:windowLightStatusBar">true</item>
+    </style>
+
+    <!-- 5. TV Studio Theme -->
+    <style name="Theme.PMTv.Studio" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/tv_primary</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <item name="colorPrimaryContainer">@color/tv_primary_variant</item>
+        <item name="colorSecondary">@color/tv_secondary</item>
+        <item name="android:colorBackground">@color/tv_background</item>
+        <item name="android:windowBackground">@color/tv_background</item>
+        <item name="colorSurface">@color/tv_surface</item>
+        <item name="colorSurfaceVariant">@color/tv_surface_variant</item>
+        <item name="android:textColorPrimary">@color/text_primary_dark</item>
+        <item name="android:textColorSecondary">@color/text_secondary_dark</item>
+        <item name="android:textColorHint">@color/text_hint_dark</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+    
+    <!-- 6. Royal Red -->
+    <style name="Theme.PMTv.Red" parent="Theme.Material3.Dark.NoActionBar">
+        <item name="colorPrimary">@color/rr_primary</item>
+        <item name="colorOnPrimary">@color/rr_background</item>
+        <item name="colorPrimaryContainer">@color/rr_primary_variant</item>
+        <item name="colorSecondary">@color/rr_secondary</item>
+        <item name="android:colorBackground">@color/rr_background</item>
+        <item name="android:windowBackground">@color/rr_background</item>
+        <item name="colorSurface">@color/rr_surface</item>
+        <item name="colorSurfaceVariant">@color/rr_surface_variant</item>
+        <item name="android:textColorPrimary">@color/text_primary_dark</item>
+        <item name="android:textColorSecondary">@color/text_secondary_dark</item>
+        <item name="android:textColorHint">@color/text_hint_dark</item>
+        <item name="fontFamily">@font/poppins</item>
+        <item name="android:fontFamily">@font/poppins</item>
+    </style>
+
+    <style name="Theme.App.Starting" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">@android:color/white</item>
+        <item name="windowSplashScreenAnimatedIcon">@drawable/splash_logo_layer</item>
+        <item name="postSplashScreenTheme">@style/Theme.PMTv.Dark</item>
+    </style>
+
+    <style name="ShapeAppearanceOverlay.App.CornerSize50Percent" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+</resources>

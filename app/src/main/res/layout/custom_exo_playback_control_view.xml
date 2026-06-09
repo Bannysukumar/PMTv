@@ -1,0 +1,241 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@android:color/transparent"> <!-- Remove flat background -->
+
+    <!-- Top Gradient Bar -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:background="@drawable/bg_gradient_top"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Top Controls -->
+    <LinearLayout
+        android:id="@+id/topControls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingHorizontal="24dp"
+        android:paddingTop="24dp"
+        android:gravity="center_vertical"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <!-- Cast -->
+        <ImageButton
+            android:id="@+id/btnCast"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ripple_glass_circle"
+            android:src="@drawable/ic_cast"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            app:tint="@color/white" />
+
+        <Space android:layout_width="16dp" android:layout_height="wrap_content" />
+
+        <!-- Picture in Picture -->
+        <ImageButton
+            android:id="@+id/btnPip"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ripple_glass_circle"
+            android:src="@drawable/ic_pip"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            app:tint="@color/white" />
+
+        <Space android:layout_width="16dp" android:layout_height="wrap_content" />
+
+        <!-- Settings -->
+        <ImageButton
+            android:id="@+id/btnSettings"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ripple_glass_circle"
+            android:src="@drawable/ic_settings"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            app:tint="@color/white" />
+
+    </LinearLayout>
+
+    <!-- Center Controls (Play/Pause/Seek) -->
+    <LinearLayout
+        android:id="@+id/centerControls"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Rewind 10s -->
+        <ImageButton
+            android:id="@+id/btnRewind"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/ripple_glass_circle"
+            android:src="@drawable/ic_replay_10"
+            android:padding="16dp"
+            android:scaleType="fitCenter"
+            app:tint="@color/white" />
+
+        <Space android:layout_width="32dp" android:layout_height="wrap_content" />
+
+        <!-- Play -->
+        <ImageButton
+            android:id="@id/exo_play"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:background="@drawable/ripple_glass_circle"
+            android:src="@drawable/ic_play_rounded"
+            android:padding="24dp"
+            android:scaleType="fitCenter"
+            app:tint="@color/white" />
+
+        <!-- Pause -->
+        <ImageButton
+            android:id="@id/exo_pause"
+            android:layout_width="88dp"
+            android:layout_height="88dp"
+            android:background="@drawable/ripple_glass_circle"
+            android:src="@drawable/ic_pause_rounded"
+            android:padding="24dp"
+            android:scaleType="fitCenter"
+            app:tint="@color/white" />
+
+        <Space android:layout_width="32dp" android:layout_height="wrap_content" />
+
+        <!-- Forward 10s -->
+        <ImageButton
+            android:id="@+id/btnForward"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:background="@drawable/ripple_glass_circle"
+            android:src="@drawable/ic_forward_10"
+            android:padding="16dp"
+            android:scaleType="fitCenter"
+            app:tint="@color/white" />
+    </LinearLayout>
+
+    <!-- Lock Screen Center-Left -->
+    <ImageButton
+        android:id="@+id/btnLock"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:background="@drawable/ripple_glass_circle"
+        android:src="@android:drawable/ic_secure"
+        app:tint="@color/white"
+        android:padding="14dp"
+        android:scaleType="fitCenter"
+        app:layout_constraintBottom_toTopOf="@+id/bottomControls"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Bottom Gradient Bar -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="140dp"
+        android:background="@drawable/bg_gradient_bottom"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <!-- Bottom Controls -->
+    <LinearLayout
+        android:id="@+id/bottomControls"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="24dp"
+        android:paddingBottom="24dp"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Live Badge (Redesigned) -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_glass_rounded"
+            android:paddingHorizontal="12dp"
+            android:paddingVertical="6dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+            
+            <View
+                android:id="@+id/liveDot"
+                android:layout_width="8dp"
+                android:layout_height="8dp"
+                android:background="@drawable/circle_red" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:text="LIVE"
+                android:textColor="@color/white"
+                android:textSize="14sp"
+                android:fontFamily="@font/poppins"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="wrap_content" />
+
+        <!-- Mute Toggle -->
+        <ImageButton
+            android:id="@+id/btnMute"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ripple_glass_circle"
+            android:src="@android:drawable/ic_lock_silent_mode_off"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            app:tint="@color/white" />
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <!-- Quality -->
+        <Button
+            android:id="@+id/btnQuality"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:text="1080p60"
+            android:textColor="@color/white"
+            android:textSize="13sp"
+            android:fontFamily="@font/poppins"
+            android:background="@drawable/ripple_glass_rounded"
+            android:paddingHorizontal="16dp"
+            style="?android:attr/borderlessButtonStyle"/>
+
+        <Space
+            android:layout_width="16dp"
+            android:layout_height="wrap_content" />
+
+        <!-- Fullscreen Toggle -->
+        <ImageButton
+            android:id="@+id/btnFullscreenToggle"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="@drawable/ripple_glass_circle"
+            android:src="@drawable/ic_fullscreen"
+            android:padding="12dp"
+            android:scaleType="fitCenter"
+            app:tint="@color/white" />
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

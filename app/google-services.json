@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "950553095405",
+    "project_id": "pmtv5464",
+    "storage_bucket": "pmtv5464.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:950553095405:android:bec1b687689968435db0e4",
+        "android_client_info": {
+          "package_name": "com.smart.pmtv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDd5f3c1frADqlY0qyFOksKRYGPmmpEkVE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
