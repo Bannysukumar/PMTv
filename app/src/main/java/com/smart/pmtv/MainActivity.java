@@ -100,6 +100,15 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void setNavigationVisible(boolean visible) {
+        if (navigationRailView != null) {
+            navigationRailView.setVisibility(visible ? View.VISIBLE : View.GONE);
+        }
+        if (bottomNavigationView != null) {
+            bottomNavigationView.setVisibility(visible ? View.VISIBLE : View.GONE);
+        }
+    }
+
     public void enterPiP() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             PictureInPictureParams params = new PictureInPictureParams.Builder()

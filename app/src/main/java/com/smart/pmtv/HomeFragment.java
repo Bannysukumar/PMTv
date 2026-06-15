@@ -5,6 +5,7 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
+import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
 import android.content.res.Configuration;
 import android.media.AudioManager;
@@ -35,6 +36,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.OnBackPressedCallback;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.core.app.ActivityCompat;
@@ -46,6 +48,7 @@ import androidx.media3.common.PlaybackException;
 import androidx.media3.common.Player;
 import androidx.media3.exoplayer.ExoPlayer;
 
+import com.google.android.material.card.MaterialCardView;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -79,6 +82,7 @@ public class HomeFragment extends Fragment {
     private ImageView gestureIcon;
 
     private boolean isTV = false;
+    private boolean isFullscreen = false;
     private boolean isNetworkAvailable = true;
     private boolean isScreenLocked = false;
     private boolean isMuted = false;
@@ -100,6 +104,17 @@ public class HomeFragment extends Fragment {
     private long lastRxTime = 0;
     private Runnable networkSpeedRunnable;
     private PreferencesManager prefs;
+
+    private View scrollView;
+    private View appBarLayout;
+    private ViewGroup fragmentRoot;
+    private ViewGroup playerContainer;
+    private ViewGroup playerContainerOriginalParent;
+    private int playerContainerOriginalIndex;
+    private ViewGroup.LayoutParams playerContainerOriginalLayoutParams;
+    private float playerContainerOriginalCornerRadius;
+    private float playerContainerOriginalElevation;
+    private OnBackPressedCallback fullscreenBackCallback;
 
     private final ServiceConnection serviceConnection = new ServiceConnection() {
         @Override
@@ -178,11 +193,23 @@ public class HomeFragment extends Fragment {
         handleOrientation(getResources().getConfiguration().orientation);
         startNetworkSpeedMonitor();
         
+        fullscreenBackCallback = new OnBackPressedCallback(false) {
+            @Override
+            public void handleOnBackPressed() {
+                exitFullscreen();
+            }
+        };
+        requireActivity().getOnBackPressedDispatcher().addCallback(getViewLifecycleOwner(), fullscreenBackCallback);
+
         listenToViewerCount();
     }
 
     private void initViews(View view) {
         playerView = view.findViewById(R.id.playerView);
+        fragmentRoot = view.findViewById(R.id.main_layout);
+        scrollView = view.findViewById(R.id.scroll_view);
+        appBarLayout = view.findViewById(R.id.app_bar_layout);
+        playerContainer = view.findViewById(R.id.playerContainer);
 
         gestureIndicatorContainer = view.findViewById(R.id.gestureIndicatorContainer);
         gestureText = view.findViewById(R.id.gestureText);
@@ -216,13 +243,7 @@ public class HomeFragment extends Fragment {
         }
 
         if (btnFullscreenToggle != null) {
-            btnFullscreenToggle.setOnClickListener(v -> {
-                if (getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
-                    requireActivity().setRequestedOrientation(android.content.pm.ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
-                } else {
-                    requireActivity().setRequestedOrientation(android.content.pm.ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
-                }
-            });
+            btnFullscreenToggle.setOnClickListener(v -> toggleFullscreen());
         }
 
         if (btnSettings != null) {
@@ -328,6 +349,129 @@ public class HomeFragment extends Fragment {
             if (btnPause != null) btnPause.setOnFocusChangeListener(focusChangeListener);
             if (btnRew != null) btnRew.setOnFocusChangeListener(focusChangeListener);
             if (btnFfwd != null) btnFfwd.setOnFocusChangeListener(focusChangeListener);
+        }
+    }
+
+    private void toggleFullscreen() {
+        if (isFullscreen) {
+            exitFullscreen();
+        } else {
+            enterFullscreen();
+        }
+    }
+
+    private void enterFullscreen() {
+        if (playerContainer == null || fragmentRoot == null || isFullscreen) return;
+
+        playerContainerOriginalParent = (ViewGroup) playerContainer.getParent();
+        if (playerContainerOriginalParent == null) return;
+
+        playerContainerOriginalIndex = playerContainerOriginalParent.indexOfChild(playerContainer);
+        playerContainerOriginalLayoutParams = playerContainer.getLayoutParams();
+
+        if (playerContainer instanceof MaterialCardView) {
+            MaterialCardView card = (MaterialCardView) playerContainer;
+            playerContainerOriginalCornerRadius = card.getRadius();
+            playerContainerOriginalElevation = card.getCardElevation();
+            card.setRadius(0f);
+            card.setCardElevation(0f);
+        }
+
+        playerContainerOriginalParent.removeView(playerContainer);
+
+        androidx.coordinatorlayout.widget.CoordinatorLayout.LayoutParams fullscreenParams =
+                new androidx.coordinatorlayout.widget.CoordinatorLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT,
+                        ViewGroup.LayoutParams.MATCH_PARENT
+                );
+        playerContainer.setLayoutParams(fullscreenParams);
+        fragmentRoot.addView(playerContainer);
+
+        if (scrollView != null) scrollView.setVisibility(View.GONE);
+        if (appBarLayout != null) appBarLayout.setVisibility(View.GONE);
+        if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).setNavigationVisible(false);
+        }
+
+        if (!isTV) {
+            requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
+            applyImmersiveUi(true);
+        }
+
+        playerView.setResizeMode(androidx.media3.ui.AspectRatioFrameLayout.RESIZE_MODE_FILL);
+        if (btnFullscreenToggle != null) {
+            btnFullscreenToggle.setImageResource(R.drawable.ic_fullscreen_exit);
+        }
+
+        isFullscreen = true;
+        if (fullscreenBackCallback != null) fullscreenBackCallback.setEnabled(true);
+        playerView.showController();
+        playerView.requestFocus();
+    }
+
+    private void exitFullscreen() {
+        if (!isFullscreen || playerContainer == null || fragmentRoot == null || playerContainerOriginalParent == null) {
+            return;
+        }
+
+        fragmentRoot.removeView(playerContainer);
+        playerContainer.setLayoutParams(playerContainerOriginalLayoutParams);
+
+        if (playerContainer instanceof MaterialCardView) {
+            MaterialCardView card = (MaterialCardView) playerContainer;
+            card.setRadius(playerContainerOriginalCornerRadius);
+            card.setCardElevation(playerContainerOriginalElevation);
+        }
+
+        playerContainerOriginalParent.addView(playerContainer, playerContainerOriginalIndex);
+
+        if (scrollView != null) scrollView.setVisibility(View.VISIBLE);
+        if (appBarLayout != null) appBarLayout.setVisibility(View.VISIBLE);
+        if (getActivity() instanceof MainActivity) {
+            ((MainActivity) getActivity()).setNavigationVisible(true);
+        }
+
+        if (!isTV) {
+            requireActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+            applyImmersiveUi(false);
+        }
+
+        playerView.setResizeMode(androidx.media3.ui.AspectRatioFrameLayout.RESIZE_MODE_FIT);
+        if (btnFullscreenToggle != null) {
+            btnFullscreenToggle.setImageResource(R.drawable.ic_fullscreen);
+        }
+
+        isFullscreen = false;
+        if (fullscreenBackCallback != null) fullscreenBackCallback.setEnabled(false);
+    }
+
+    private void applyImmersiveUi(boolean immersive) {
+        if (getActivity() == null) return;
+
+        View decorView = requireActivity().getWindow().getDecorView();
+        if (immersive) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+                android.view.WindowInsetsController controller = decorView.getWindowInsetsController();
+                if (controller != null) {
+                    controller.hide(android.view.WindowInsets.Type.statusBars() | android.view.WindowInsets.Type.navigationBars());
+                    controller.setSystemBarsBehavior(android.view.WindowInsetsController.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+                }
+            } else {
+                decorView.setSystemUiVisibility(
+                        View.SYSTEM_UI_FLAG_FULLSCREEN
+                                | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+                                | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+                                | View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                                | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                                | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION);
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            android.view.WindowInsetsController controller = decorView.getWindowInsetsController();
+            if (controller != null) {
+                controller.show(android.view.WindowInsets.Type.statusBars() | android.view.WindowInsets.Type.navigationBars());
+            }
+        } else {
+            decorView.setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
         }
     }
 
@@ -584,20 +728,17 @@ public class HomeFragment extends Fragment {
     private void handleOrientation(int orientation) {
         if (isTV) return;
 
+        if (isFullscreen) {
+            applyImmersiveUi(true);
+            return;
+        }
+
         if (orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            requireActivity().getWindow().getDecorView().setSystemUiVisibility(
-                    View.SYSTEM_UI_FLAG_FULLSCREEN
-                            | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-                            | View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY);
-            
-            // Hide bottom nav in landscape
+            applyImmersiveUi(true);
             View bottomNav = requireActivity().findViewById(R.id.bottom_navigation);
             if (bottomNav != null) bottomNav.setVisibility(View.GONE);
-
         } else {
-            requireActivity().getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_VISIBLE);
-            
-            // Show bottom nav in portrait
+            applyImmersiveUi(false);
             View bottomNav = requireActivity().findViewById(R.id.bottom_navigation);
             if (bottomNav != null) bottomNav.setVisibility(View.VISIBLE);
         }
@@ -628,6 +769,9 @@ public class HomeFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
+        if (isFullscreen) {
+            exitFullscreen();
+        }
         super.onDestroyView();
         if (isBound) {
             requireActivity().unbindService(serviceConnection);
