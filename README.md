@@ -1,75 +1,59 @@
-# 📺 PMTv - Premium Live TV & OTT Platform
+<!-- readme-seo: bannysukumar-professional-v4 -->
 
-A modern, scalable, and feature-rich Live TV and Media Streaming application built for Android and Android TV, powered by a Realtime Firebase Backend and a React Admin Dashboard.
+# PMTv
 
-[![License](https://img.shields.io/github/license/Bannysukumar/PMTv)](https://github.com/Bannysukumar/PMTv/blob/main/LICENSE) [![Stars](https://img.shields.io/github/stars/Bannysukumar/PMTv)](https://github.com/Bannysukumar/PMTv/stargazers) [![Last commit](https://img.shields.io/github/last-commit/Bannysukumar/PMTv)](https://github.com/Bannysukumar/PMTv/commits/main)
+PMTv is an Android live TV application. The Android package in this repository is `com.smart.pmtv`, with `MainActivity` and `SplashActivity` under `app/src/main/java`. A separate web admin lives in `admin-panel`.
 
 ## Overview
 
-A modern, scalable, and feature-rich Live TV and Media Streaming application built for Android and Android TV, powered by a Realtime Firebase Backend and a React Admin Dashboard.
-
-
-What is actually in the repository: `admin-panel/`, `app/`, `gradle/`. GitHub reports the primary language as Java.
+The Gradle build uses the Android application plugin and Google services. `logo.jpeg` is in the repository root. `PMATv` is a second public repository with the same Android package name. This README is for `PMTv` only. Nothing was archived or renamed.
 
 ## Features
 
-
-- Ad Manager
-- Admin Login
-- Alerts Manager
-- Analytics
-- Audit Logs
-- Channel Manager
-- Community Manager
-- Live Stream Manager
-- Media Library
-- News Form
-- News Manager
-- Notification Builder
+- Android app module `app` with package `com.smart.pmtv`
+- `MainActivity` and `SplashActivity`
+- Web admin project in `admin-panel`
 
 ## Tech Stack
 
 | Technology | Where it shows up |
 |---|---|
-| React | User interface |
-| Vite | Frontend build tool |
-| Firebase | Backend services used by this repository |
-| Android / Gradle | Mobile application build |
-| Recharts | Charts |
+| Java | `app/src/main/java/com/smart/pmtv` |
+| Android Gradle | `build.gradle.kts`, `settings.gradle.kts`, `gradlew` |
+| Google services | Android Gradle plugin alias `google.services` |
 
-## Project Architecture
+## Architecture
 
-Android application (Gradle module app) plus a separate admin-panel web app.
+Android app module `app` plus a web project in `admin-panel`.
 
 ## Project Structure
 
 ```text
 PMTv/
-├── admin-panel/
 ├── app/
-├── WhatsApp Image 2026-06-08 at 11.24.03 AM.jpeg
+├── admin-panel/
+├── gradle/
 ├── build.gradle.kts
-├── gradle.properties
-├── gradlew
-├── gradlew.bat
-├── logo.jpeg
 ├── settings.gradle.kts
-├── window_dump.xml
+└── logo.jpeg
 ```
 
-## Getting Started
+## Prerequisites
+
+- Android Studio, or a JDK plus the Gradle wrapper already in the repo
+
+## Installation
 
 ```bash
 git clone https://github.com/Bannysukumar/PMTv.git
 cd PMTv
-# Open the project in Android Studio, or run the Gradle wrapper from the repository root.
 ```
 
-Scripts defined in package.json:
+Open the project in Android Studio, or run the Gradle wrapper from this directory.
 
-- `npm run dev` — `vite`
-- `npm run build` — `vite build`
-- `npm run lint` — `eslint .`
+## Usage
+
+Build and run the `app` module. The admin UI is the separate `admin-panel` project.
 
 ## Contributing
 
@@ -81,8 +65,6 @@ Licensed under MIT. See [LICENSE](LICENSE).
 
 ## Author
 
-[Banny Sukumar](https://github.com/Bannysukumar)
+Banny Sukumar
 
-- GitHub: [@Bannysukumar](https://github.com/Bannysukumar)
-- Portfolio: [adepu-sukumar.vercel.app](https://adepu-sukumar.vercel.app/)
-- LinkedIn: [Adepu Sukumar](https://www.linkedin.com/in/adepu-sukumar-59b423351)
+GitHub: https://github.com/Bannysukumar
