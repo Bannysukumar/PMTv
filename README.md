@@ -241,3 +241,13 @@ If you encounter any issues, please check the [Issues](https://github.com/Bannys
   <br/>
   <i>Thank you for checking out PMTv! Don't forget to ⭐ star the repository to show your support!</i>
 </div>
+
+<!-- readme-seo: bannysukumar -->
+
+## Open source
+
+This repository is open source and maintained by [Banny Sukumar](https://github.com/Bannysukumar). PMTv is published so other developers can study the code and contribute.
+
+## License
+
+Released under the [MIT License](LICENSE). Copyright (c) 2026 Banny Sukumar. See [CONTRIBUTING.md](CONTRIBUTING.md) if you want to help.
